@@ -1,6 +1,6 @@
 const router = require('express').Router()  ;
 const User = require ('../model/User');
-const { restart } = require('nodemon');
+//const { restart } = require('nodemon');
 const jwt = require ('jsonwebtoken') ;
 
 //Register 
