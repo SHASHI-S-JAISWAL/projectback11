@@ -2,6 +2,8 @@ const express = require ('express');
 const app = express() ;
 const dotenv  = require('dotenv');
 const mongoose = require('mongoose');
+import cors from 'cors';
+
 //importing routes
 const authRoute = require('./routes/auth');
 const todo = require('./routes/todo');
@@ -17,6 +19,7 @@ app.use((req, res, next) => {
   });
 //middleware
 app.use (express.json()) ;
+app.use(cors());
 
 //route middleware
 app.use ('/api/user',authRoute);
