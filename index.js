@@ -11,6 +11,10 @@ dotenv.config();
 //connect to db
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true,useUnifiedTopology: true  }, (err) =>{console.log('Connected...')  });
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 //middleware
 app.use (express.json()) ;
 
