@@ -2,7 +2,8 @@ const express = require ('express');
 const app = express() ;
 const dotenv  = require('dotenv');
 const mongoose = require('mongoose');
-import cors from 'cors';
+//import cors from 'cors';
+//const request = require('request');
 
 //importing routes
 const authRoute = require('./routes/auth');
@@ -10,13 +11,18 @@ const todo = require('./routes/todo');
 
 dotenv.config();
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 //connect to db
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true,useUnifiedTopology: true  }, (err) =>{console.log('Connected...')  });
 
 
 //middleware
 app.use (express.json()) ;
-app.use(cors());
+//app.use(cors());
 
 //route middleware
 app.use ('/api/user',authRoute);
